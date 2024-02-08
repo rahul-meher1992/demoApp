@@ -1,0 +1,7 @@
+<div *ngFor="let post of posts" class="cards">
+    <!-- <mat-card appTitleHighlighter class = "card-title">{{post.title}} <span class = "show_text">show</span></mat-card> -->
+    <mat-card class="card-title">
+        <span appTitleHighlighter>{{ post.title }}</span>
+        <span class="show_text">show</span>
+    </mat-card>
+</div>
