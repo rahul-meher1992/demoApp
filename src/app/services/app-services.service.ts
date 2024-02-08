@@ -21,7 +21,11 @@ export class AppServicesService {
   }
 
 
-  //API call using fetch method
+   /**
+    * 
+    * @returns set of posts by passing api url to fetch method if there is any issue in response it will
+    *  throw error or else it will give us the data as a response 
+    */
   getPosts(){
     return fetch(`${this.apiUrl}/posts`).then(response=>{
       if(!response.ok){
@@ -36,7 +40,10 @@ export class AppServicesService {
   }
 
 
-  //Method to call the API using axios
+ /**
+  * 
+  * @returns set of posts by passing the api endpoint inside the get method by using axios 
+  */
   getData():Observable<any> {
     return new Observable(observer =>{
       axios.get('https://jsonplaceholder.typicode.com/posts').then(response=>{
