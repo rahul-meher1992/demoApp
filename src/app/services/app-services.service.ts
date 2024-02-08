@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import axios from 'axios';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,10 +15,36 @@ export class AppServicesService {
   constructor(private http: HttpClient) { }
 
   //Method to call the API
-
   getPostData(){
     //make post request to api url
-
     return this.http.get(`${this.apiUrl}/posts`);
+  }
+
+
+  //API call using fetch method
+  getPosts(){
+    return fetch(`${this.apiUrl}/posts`).then(response=>{
+      if(!response.ok){
+        throw new Error('Network issue')
+      }
+      return response.json();
+    }).then(data=>{
+      return data;
+    }).catch(error=>{
+      console.error('There is a problem with fetch')
+    });
+  }
+
+
+  //Method to call the API using axios
+  getData():Observable<any> {
+    return new Observable(observer =>{
+      axios.get('https://jsonplaceholder.typicode.com/posts').then(response=>{
+        observer.next(response.data);
+        observer.complete();
+      }).catch(error=>{
+        observer.error(error);
+      });
+    });
   }
 }
