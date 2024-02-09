@@ -8,7 +8,7 @@ export class TitleHighlighterDirective {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {
-    // Apply styles to the title element when the directive is initialized
+    // Apply styles to the title element when the directive is initialized  
     this.setStyle();
   }
 
