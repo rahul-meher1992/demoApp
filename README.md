@@ -10,3 +10,5 @@ Table of Contents
     Installation
     Running the Application
 3. Project Structure
+
+4. Command to run the project : ng-serve
