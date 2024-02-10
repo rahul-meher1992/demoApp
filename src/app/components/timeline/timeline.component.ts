@@ -16,23 +16,28 @@ export class TimelineComponent implements OnInit {
      //call the method from service file using HTTP Client
      this.appServicesService.getPostData().subscribe((data= [])=>{
       this.posts = data
-      this.posts.forEach((obj:any) => {
-        obj.showButtonVisible = true;
-        obj.hideButtonVisible = false;
-      });
-      console.log(this.posts)
+      this.posts = this.posts.map((obj:any)=>{
+        return {...obj, showingComments:true}
+      })
+      console.log(this.posts);
      })
   }
 
-  toggleButtons(index: number): void {
-    const post = this.posts[index];
-    // console.log(post)
-    if(post.showButtonVisible){
-      post.showButtonVisible = false;
-      post.hideButtonVisible = true
+  toggleData(post:any){
+    post.showingComments = !post.showingComments;
+    if(post.showingComments){
+      this.fetchData(post)
     }else{
-      post.showButtonVisible = true;
-      post.hideButtonVisible = false
+      this.hideData(post)
     }
   }
+
+  fetchData(post:any){
+    console.log(post.title)
+  }
+
+  hideData(post:any){
+    console.log(post.title);
+  }
+
 }

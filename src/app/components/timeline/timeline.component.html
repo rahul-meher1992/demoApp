@@ -3,8 +3,7 @@
         <!-- <mat-card appTitleHighlighter class = "card-title">{{post.title}} <span class = "show_text">show</span></mat-card> -->
         <mat-card class="card-title">
             <span appTitleHighlighter>{{ post.title }}</span>
-            <span  class="show_text" *ngIf = "post.showButtonVisible"  (click)="toggleButtons(i)">Show comments</span>
-            <span   class="show_text" *ngIf = "post.hideButtonVisible" (click)="toggleButtons(i)">Hide comments</span>
+            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Show' : 'Hide' }}</span>
         </mat-card>
     </div>
 </div>
