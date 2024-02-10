@@ -54,4 +54,13 @@ export class AppServicesService {
       });
     });
   }
+
+   /**
+  * 
+  * @returns set of comments to that particular posts by passing the post id
+  */
+
+   getComments(postId:number){
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+   }
 }

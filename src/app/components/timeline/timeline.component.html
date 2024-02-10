@@ -3,7 +3,7 @@
         <!-- <mat-card appTitleHighlighter class = "card-title">{{post.title}} <span class = "show_text">show</span></mat-card> -->
         <mat-card class="card-title">
             <span appTitleHighlighter>{{ post.title }}</span>
-            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Show' : 'Hide' }}</span>
+            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Show comments' : 'Hide comments' }}</span>
         </mat-card>
     </div>
 </div>
