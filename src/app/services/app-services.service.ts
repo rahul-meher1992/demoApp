@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { Observable } from 'rxjs';
+import {environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AppServicesService {
 
-  //Define API end point below
-  apiUrl = 'https://jsonplaceholder.typicode.com';
+  //Define API end point below and fetching the apiUrl from enviroment.ts file
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -55,12 +56,13 @@ export class AppServicesService {
     });
   }
 
-   /**
+  /**
   * 
   * @returns set of comments to that particular posts by passing the post id
   */
 
    getComments(postId:number){
-    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+    return this.http.get(`${this.apiUrl}/posts/${postId}/comments`)
    }
 }
+
