@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AppServicesService } from '../../services/app-services.service';
+import { BackendServicesService } from '../../services/backend-services.service';
 
 @Component({
   selector: 'app-timeline',
@@ -10,16 +10,17 @@ export class TimelineComponent implements OnInit {
 
   posts: any = [];
 
-  constructor(private appServicesService: AppServicesService) { }
+  constructor(private backendServicesService: BackendServicesService) { }
 
   ngOnInit(): void {
-    //call the method from service file using HTTP Client
-    this.appServicesService.getPostData().subscribe((data = []) => {
-      this.posts = data
-      this.posts = this.posts.map((obj: any) => {
-        return { ...obj, showingComments: true } // Here assigning the key showingComments as true to every object when it get initialised
-      })
-    })
+    this.getAllPostsData();
+  };
+
+
+  // calling the getPosts method from backend service to get the data;
+  async getAllPostsData(){
+    await this.backendServicesService.getPosts();
+    this.posts = this.backendServicesService.postsData
   }
 
 
@@ -29,21 +30,12 @@ export class TimelineComponent implements OnInit {
     if (post.showingComments) {
       this.hideData(post)
     } else {
-      this.fetchData(post)
+      this.backendServicesService.getCommentsById(post); 
     }
   }
 
 
-  // fetchData is calling comments api from service file by passing the postId 
-  fetchData(post: any) {
-    const postId = post.id
-    this.appServicesService.getComments(postId).subscribe(comments=>{
-      console.log(comments);
-    })
-  }
-
   hideData(post: any) {
-
-
+    // Do something
   }
 }
