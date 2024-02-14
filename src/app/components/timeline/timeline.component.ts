@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BackendServicesService } from '../../services/backend-services.service';
 
 @Component({
@@ -7,8 +7,11 @@ import { BackendServicesService } from '../../services/backend-services.service'
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
+  @Output() allCommentsData = new EventEmitter<any[]>();
 
   posts: any = [];
+  comments:any = [];
+  postId!: number;
 
   constructor(private backendServicesService: BackendServicesService) { }
 
@@ -17,7 +20,10 @@ export class TimelineComponent implements OnInit {
   };
 
 
-  // calling the getPosts method from backend service to get the data;
+  /**
+  * 
+  * @returns set of posts by calling the getPosts method in backend service and assigning that to posts variable
+  */
   async getAllPostsData(){
     await this.backendServicesService.getPosts();
     this.posts = this.backendServicesService.postsData
@@ -30,8 +36,20 @@ export class TimelineComponent implements OnInit {
     if (post.showingComments) {
       this.hideData(post)
     } else {
-      this.backendServicesService.getCommentsById(post); 
+       this.getCommentsData(post);
     }
+  }
+
+  /**
+   * 
+   * @param post to get the comments here we are passing the particular post
+   */
+
+  async getCommentsData(post: any){
+    var data:any = []
+    data = await this.backendServicesService.getCommentsById(post) || [];
+    this.comments = data;
+    this.allCommentsData.emit(data);
   }
 
 
