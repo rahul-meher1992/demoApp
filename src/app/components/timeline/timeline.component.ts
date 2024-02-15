@@ -30,14 +30,21 @@ export class TimelineComponent implements OnInit {
   }
 
 
-  // Button toggling is happening and calling fetch data and hide data functions
+   /**
+   * 
+   * @param post to handle the button toggling and to handle the comments based on the particular post and showingComments (key);
+   */
   toggleData(post: any) {
-    post.showingComments = !post.showingComments;
-    if (post.showingComments) {
-      this.hideData(post)
-    } else {
-       this.getCommentsData(post);
+  this.posts.map((x: any) => {
+    if(x.id == post.id){
+      x.showingComments = !x.showingComments;
+      if(x.showingComments){
+        this.hideData(post)
+      }else{
+        this.getCommentsData(post);
+      }
     }
+  })
   }
 
   /**

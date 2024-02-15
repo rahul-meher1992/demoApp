@@ -13,7 +13,7 @@ export class CommentsComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
     setTimeout(() => {
-      this.particularCommentData = this.comments.filter(comment => comment.postId === this.postId);
+      this.particularCommentData = this.comments;
     }, 1000);
       
   }
