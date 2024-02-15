@@ -20,23 +20,29 @@ export class BackendServicesService {
     try {
       const data = await this.appServicesService.getPostData().toPromise();
       this.postsData = data;
-      this.postsData = this.postsData.map((obj: any) => ({...obj, showingComments: true}));
+      this.postsData = this.postsData.map((obj: any) => ({ ...obj, showingComments: true }));
     } catch (error) {
       console.error(error);
     }
   }
 
 
-  /**
-  * 
-  * @returns comments based on particular id
-  */
- 
+  
 
-  getCommentsById(post:any){
-    const postId = post.id;
-      this.appServicesService.getComments(postId).subscribe(comments => {
-      console.log(comments);
-    })
+  /**
+   * 
+   * @param post 
+   * @returns 
+   */
+  async getCommentsById(post: any) {
+    try {
+      const postId = post.id;
+      const comData = await this.appServicesService.getComments(postId).toPromise();
+      return comData
+    } catch (error) {
+      console.error(error)
+      return 
+    }
+
   }
 }

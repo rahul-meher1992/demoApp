@@ -12,13 +12,15 @@ import { HomeComponent } from './components/home/home.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleHighlighterDirective } from './directives/title-highlighter.directive';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TimelineComponent,
-    TitleHighlighterDirective
+    TitleHighlighterDirective,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
