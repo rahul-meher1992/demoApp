@@ -28,17 +28,15 @@ export class BackendServicesService {
         this.postsData = JSON.parse(localStorageData);
       }else{
         const data = await this.appServicesService.getPostData().toPromise();
-        localStorage.setItem('postsData',JSON.stringify(data));
         this.postsData = data;
+        const newData = this.postsData.map((obj:any)=>({...obj,isComments:false,comments:[]}))
+        localStorage.setItem('postsData',JSON.stringify(newData)); 
       }  
       this.postsData = this.postsData.map((obj: any) => ({ ...obj, showingComments: true }));
     } catch (error) {
       console.error(error);
     }
   }
-
-
-  
 
   /**
    * 
