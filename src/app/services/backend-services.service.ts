@@ -30,8 +30,9 @@ export class BackendServicesService {
         const data = await this.appServicesService.getPostData().toPromise();
         localStorage.setItem('postsData',JSON.stringify(data));
         this.postsData = data;
+        const newData = this.postsData.map((obj:any)=>({...obj,comments:[],showingComments: false}))
+        localStorage.setItem('postsData',JSON.stringify(newData)); 
       }  
-      this.postsData = this.postsData.map((obj: any) => ({ ...obj, showingComments: true }));
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +53,7 @@ export class BackendServicesService {
       return comData
     } catch (error) {
       console.error(error)
-      return 
+      return []
     }
 
   }
