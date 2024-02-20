@@ -12,10 +12,8 @@ export class CommentsComponent implements OnInit {
 
   constructor() { }
   ngOnInit(): void {
-    setTimeout(() => {
       this.particularCommentData = this.comments;
-    }, 1000);
-      
+      console.log(this.comments);
   }
 
 }

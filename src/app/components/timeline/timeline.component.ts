@@ -43,50 +43,9 @@ export class TimelineComponent implements OnInit {
   * If the data is present in the localStorage we are not calling the api anymore , we are just getting the data from local 
   * storage for the particular post and emitting to the comment component.
   */
-  // async toggleData(post: any) {
-  //   const selectedPost = this.posts.find((x: any) => x.id === post.id);
-  //   this.posts.forEach(async (x: any) => {
-  //     if (x.id == post.id) {
-  //       x.showingComments = !x.showingComments;
-  //       if (x.showingComments) {
-  //         this.hideData(post)
-  //       } else if (!selectedPost.isComments) {
-  //         const commentsData = await this.backendServicesService.getCommentsById(post) || [];
-  //         this.comments = commentsData;
-  //         this.allCommentsData.emit(this.comments);
-  //         selectedPost.comments = commentsData;
-  //         selectedPost.isComments = true;
-  //         //update local storage
-  //         const localStorageData = localStorage.getItem('postsData');
-  //         if (localStorageData) {
-  //           const parsedData = JSON.parse(localStorageData);
-  //           const updatedPostsData = parsedData.map((p: any) => {
-  //             if (p.id === post.id) {
-  //               return { ...p, comments: commentsData, isComments: true }
-  //             }
-  //             return p;
-  //           })
-  //           localStorage.setItem('postsData', JSON.stringify(updatedPostsData));
-  //         }
-  //       } else if (selectedPost.isComments && selectedPost.comments.length > 0) {
-  //         const localData = localStorage.getItem('postsData');
-  //         if (localData) {
-  //           const localParsedData = JSON.parse(localData);
-  //           const selectedPost = localParsedData.find((x: any) => x.id === post.id);
-  //           if (selectedPost) {
-  //             if (selectedPost.comments && selectedPost.comments.length > 0) {
-  //               this.comments = selectedPost.comments;
-  //               this.allCommentsData.emit(this.comments);
-  //             }
-  //           }
-  //         }
-
-  //       }
-  //     }
-  //   });
-  // }
 
   async toggleData(post: any) {
+    post.showingComments = !post.showingComments;
     const localStorageData:any = localStorage.getItem('postsData');
     const parsedData = JSON.parse(localStorageData);
     const selectedPost = parsedData.find((x: any) => x.id === post.id);
