@@ -3,9 +3,9 @@
         
         <mat-card class="card-title">
             <span appTitleHighlighter>{{ post.title }}</span>
-            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Show comments' : 'Hide comments' }}</span>
+            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Hide comments' : 'Show comments' }}</span>
             <div>
-                <app-comments *ngIf = "!post.showingComments" [comments] = "comments"></app-comments>
+                <app-comments *ngIf = "post.showingComments" [comments] = "post.comments"></app-comments>
             </div>  
         </mat-card>
     </div>
