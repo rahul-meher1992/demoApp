@@ -36,7 +36,7 @@ export class TimelineComponent implements OnInit {
   * 
   * At the very first time when we are calling get posts API immediately after that we are assigning two keys to th
   * object and setting the whole object to local storage .
-  * Then we are checking if the data is not present in the local storage we are the the comments api and setting the
+  * Then we are checking if the data is not present in the local storage we are calling the comments api and setting the
   * comments for the particular post into the comments array and changing the flag isComments to true and emitting the same
   * to comments component.
   * 
