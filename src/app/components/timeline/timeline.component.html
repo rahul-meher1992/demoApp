@@ -1,12 +1,18 @@
 <div class="container">
-    <div *ngFor="let post of posts; let i = index" class = "cards">
-        
+    <div *ngFor="let post of posts; let i = index" class="cards">
+
         <mat-card class="card-title">
             <span appTitleHighlighter>{{ post.title }}</span>
-            <span  class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Hide comments' : 'Show comments' }}</span>
+            <span class="show_text" #showHideButton (click)="toggleData(post)">{{ post.showingComments ? 'Hide comments'
+                : 'Show comments' }}</span>
+            <span class="edit_icon" mat-icon-button (click)="editPost()">
+                <mat-icon>edit</mat-icon>
+            </span>
             <div>
-                <app-comments *ngIf = "post.showingComments" [comments] = "post.comments"></app-comments>
-            </div>  
+                <app-comments *ngIf="post.showingComments" [comments]="post.comments"></app-comments>
+            </div>
         </mat-card>
     </div>
 </div>
+
+<app-popup *ngIf="isPopupVisible" [title]="'Edit Post'" (close)="closePopup()"></app-popup>

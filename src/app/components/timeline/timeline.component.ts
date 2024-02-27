@@ -12,6 +12,7 @@ export class TimelineComponent implements OnInit {
   posts: any = [];
   comments:any = [];
   postId!: number;
+  isPopupVisible = false;
 
   constructor(private backendServicesService: BackendServicesService) { }
 
@@ -84,5 +85,13 @@ export class TimelineComponent implements OnInit {
 
   hideData(post: any) {
     // Do something
+  }
+
+  editPost() {
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
   }
 }
