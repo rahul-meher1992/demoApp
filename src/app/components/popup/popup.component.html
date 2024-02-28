@@ -1,9 +1,14 @@
-<div class="popup">
-    <div class="popup-header">
-        <button>Close</button>
+<form>
+    <div class="popup">
+        <div class="close-button">
+            <mat-icon (click)="onClose()">close</mat-icon>
+        </div>
+
+        <div class="popup-body">
+            <mat-form-field appearance="fill">
+                <textarea matInput [formControl]="postControl" placeholder="Enter your text"></textarea>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="popup-body">
-        <h1>popup works!</h1>
-    </div>
-</div>
-<div class="overlay" ></div>
+    <div class="overlay" (click)="onClose()"></div>
+</form>

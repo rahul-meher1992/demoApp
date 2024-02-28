@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -33,7 +35,9 @@ import { PopupComponent } from './components/popup/popup.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
     // FlexLayoutModule
   ],
   providers: [],

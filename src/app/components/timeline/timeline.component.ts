@@ -88,6 +88,7 @@ export class TimelineComponent implements OnInit {
   }
 
   editPost() {
+    console.log('clicked');
     this.isPopupVisible = true;
   }
 
