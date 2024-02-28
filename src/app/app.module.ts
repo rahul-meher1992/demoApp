@@ -14,13 +14,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleHighlighterDirective } from './directives/title-highlighter.directive';
 import { CommentsComponent } from './components/comments/comments.component';
 
+import { MatIconModule } from '@angular/material/icon';
+import { PopupComponent } from './components/popup/popup.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TimelineComponent,
     TitleHighlighterDirective,
-    CommentsComponent
+    CommentsComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { CommentsComponent } from './components/comments/comments.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatIconModule
     // FlexLayoutModule
   ],
   providers: [],
